@@ -130,8 +130,8 @@ public class Consumer
 		{
 			AppClient appClient = new AppClient();
 			
-			consumer  = EmaFactory.createOmmConsumer(EmaFactory.createOmmConsumerConfig().host("localhost:14002").username("user"));
-			
+			//consumer  = EmaFactory.createOmmConsumer(EmaFactory.createOmmConsumerConfig().host("localhost:14002").username("user"));
+			consumer  = EmaFactory.createOmmConsumer(EmaFactory.createOmmConsumerConfig().consumerName("Consumer_1").username("user"));
 			consumer.registerClient(EmaFactory.createReqMsg().serviceName("ELEKTRON_DD").name("EUR="), appClient);
 			
 			Thread.sleep(60000);			// API calls onRefreshMsg(), onUpdateMsg() and onStatusMsg()
