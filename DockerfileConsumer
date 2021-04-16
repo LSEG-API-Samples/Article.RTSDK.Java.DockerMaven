@@ -11,6 +11,5 @@ FROM openjdk:11
 COPY --from=builder /app/target/rtsdkj_docker_maven-1.0-jar-with-dependencies.jar /
 COPY EmaConfig.xml .
 COPY etc ./etc
-COPY run.sh ./run.sh
-# Use shell script to support passing application name and its agruments to entrypoint
-ENTRYPOINT [ "/run.sh" ]
+CMD ["java", "-cp", "/rtsdkj_docker_maven-1.0-jar-with-dependencies.jar","com.refinitiv.ema.consumer.Consumer"]
+#CMD ["ls", "-la"]
