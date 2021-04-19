@@ -3,3 +3,4 @@ note.txt
 .vscode/
 Dockerfile_old
 docker.txt
+simpleCloudConsumer/target/

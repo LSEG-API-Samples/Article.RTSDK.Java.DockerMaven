@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.refinitiv.ema</groupId>
-    <artifactId>rtsdkj_docker_maven</artifactId>
+    <artifactId>cloud_consumer</artifactId>
     <version>1.0</version>
 
-    <name>rtsdkj_docker_maven</name>
+    <name>cloud_consumer</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -63,7 +63,7 @@
     </dependencies>
 
     
-     <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -75,6 +75,13 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        com.refinitiv.ema.cloud.CloudConsumer 
+                                    </mainClass>
+                                </manifest>
+                            </archive>
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>

@@ -8,7 +8,7 @@ RUN mvn -e -B package
 
 # RTSDK Java
 FROM openjdk:11
-COPY --from=builder /app/target/rtsdkj_docker_maven-1.0-jar-with-dependencies.jar /
+COPY --from=builder /app/target/cloud_consumer-1.0-jar-with-dependencies.jar /
 COPY EmaConfig.xml .
 COPY etc ./etc
 COPY run.sh ./run.sh
