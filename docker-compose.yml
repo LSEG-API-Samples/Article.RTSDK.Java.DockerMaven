@@ -1,0 +1,19 @@
+version: "3"
+services: 
+    provider:
+        build: .
+        networks: 
+            - rssl_network
+        command:
+            - com.refinitiv.ema.provider.IProvider
+    consumer:
+        build: .
+        depends_on: 
+            - provider
+        networks: 
+            - rssl_network
+        command: 
+            - com.refinitiv.ema.consumer.Consumer
+            
+networks: 
+    rssl_network:
