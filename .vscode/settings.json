@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "Dockerfile-consumer": "dockerfile",
+        "Dockerfile-provider": "dockerfile"
+    },
+    "terminal.integrated.env.windows": {
+		"COMPOSE_DOCKER_CLI_BUILD": "0"
+	}
+}

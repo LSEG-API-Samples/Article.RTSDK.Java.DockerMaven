@@ -1,0 +1,124 @@
+09:06:22.274 [main] INFO  com.refinitiv.ema.consumer.Consumer - Starting Consumer application
+09:06:26.491 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Refresh message
+09:06:26.493 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:26.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:26.495 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item State: Open / Ok / None / 'Refresh Completed'
+09:06:27.490 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:27.491 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:27.492 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:28.492 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:28.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:28.496 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:29.492 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:29.492 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:29.493 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:30.492 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:30.493 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:30.493 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:31.493 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:31.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:31.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:32.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:32.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:32.495 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:33.494 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:33.495 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:33.496 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:34.495 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:34.496 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:34.497 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:35.496 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:35.497 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:35.498 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:36.498 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:36.500 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:36.503 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:37.499 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:37.501 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:37.503 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:38.501 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:38.502 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:38.505 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:39.501 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:39.503 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:39.505 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:40.503 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:40.504 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:40.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:41.504 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:41.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:41.508 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:42.504 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:42.504 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:42.505 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:43.504 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:43.505 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:43.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:44.505 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:44.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:44.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:45.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:45.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:45.507 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:46.506 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:46.507 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:46.508 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:47.508 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:47.510 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:47.512 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:06:48.508 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:06:48.509 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:06:48.510 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:05.162 [main] INFO  com.refinitiv.ema.consumer.Consumer - Starting Consumer application
+09:08:09.321 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Refresh message
+09:08:09.323 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:09.323 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:09.324 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item State: Open / Ok / None / 'Refresh Completed'
+09:08:10.323 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:10.325 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:10.328 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:11.324 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:11.325 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:11.327 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:12.326 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:12.327 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:12.330 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:13.325 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:13.326 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:13.327 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:14.326 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:14.326 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:14.327 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:15.327 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:15.329 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:15.330 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:16.329 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:16.331 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:16.333 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:17.329 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:17.330 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:17.330 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:18.330 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:18.332 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:18.333 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:19.331 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:19.332 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:19.332 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:20.331 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:20.332 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:20.333 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:21.333 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:21.334 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:21.335 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:22.333 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:22.334 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:22.335 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:23.334 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:23.335 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:23.336 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:24.335 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:24.336 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:24.337 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED
+09:08:25.337 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Consumer: Receives Market Price Update message
+09:08:25.339 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Item Name: EUR=
+09:08:25.341 [pool-3-thread-1] INFO  com.refinitiv.ema.consumer.AppClient - Service Name: DIRECT_FEED

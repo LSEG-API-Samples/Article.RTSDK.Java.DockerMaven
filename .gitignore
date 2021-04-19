@@ -1,6 +1,5 @@
-target/
 note.txt
-.vscode/
-Dockerfile_old
 docker.txt
 simpleCloudConsumer/target/
+advanceExamples/Consumer/target/
+advanceExamples/IProvider/target/

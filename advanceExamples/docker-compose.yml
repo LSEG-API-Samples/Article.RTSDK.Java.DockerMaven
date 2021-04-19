@@ -1,0 +1,16 @@
+version: "3.9"
+services: 
+    provider:
+        image: developers/provider
+        build: 
+            context: ./IProvider
+            dockerfile: Dockerfile-provider
+    consumer:
+        image: developers/consumer
+        build: 
+            context: ./Consumer
+            dockerfile: Dockerfile-consumer
+        depends_on: 
+            - provider
+        volumes: 
+            - ./Consumer/logs:/logs
