@@ -2,18 +2,18 @@
 - version: 1.0.0
 - Last update: April 2021
 - Environment: Windows, Linux
-- Compiler: Java
+- Compiler: Java and Maven
 - Prerequisite: [Demo prerequisite](#prerequisite)
 
 ## <a id="Introduction"></a>Introduction
 
 [Refinitiv Real-Time SDK (Java Edition)](https://developers.refinitiv.com/en/api-catalog/elektron/elektron-sdk-java) (RTSDK, formerly known as Elektron SDK) is a suite of modern and open source APIs that aim to simplify development through a strong focus on ease of use and standardized access to a broad set of Refinitiv proprietary content and services via the proprietary TCP connection named RSSL and proprietary binary message encoding format named OMM Message.  The SDK supports Java build automation tools such as [Apache Maven](https://maven.apache.org/) and [Gradle](https://gradle.org/) which helps Java developers build RTSDK Java application, manage its dependencies, and better collaboration in the team.
 
-Docker is an open containerization platform for developing, testing, deploying, and running any software application. In Docker, the applications are presented as lightweight, portable, and self-sustaining containers which can be simultaneously run in a loosely isolated and virtual environment on a given host. Developers can use Docker to automate repetitive chores, such as setting up and configuring controlled development environments. Each environment or container has its resources that are independent of other containers. Numerous containers of separate applications are running on completely different stacks. Therefore, developers can avoid common problems, such as run-time library conflicts, and unsupported environments, and focus totally on developing software. Moreover, they can simply delete the containers without any footprints left on the host machine.
+[Docker](https://www.docker.com/) is an open containerization platform for developing, testing, deploying, and running any software application. In Docker, the applications are presented as lightweight, portable, and self-sustaining containers which can be simultaneously run in a loosely isolated and virtual environment on a given host. Developers can use Docker to automate repetitive chores, such as setting up and configuring controlled development environments. Each environment or container has its resources that are independent of other containers. Numerous containers of separate applications are running on completely different stacks. Therefore, developers can avoid common problems, such as run-time library conflicts, and unsupported environments, and focus totally on developing software. Moreover, they can simply delete the containers without any footprints left on the host machine.
 
 My colleague's [Deploy and Run Refinitiv Real-Time SDK in Docker](https://developers.refinitiv.com/en/article-catalog/article/deploy-and-run-elektron-sdk-docker) article already shows how to deploy and run RTSDK applications in the Docker by let Docker downloads the SDK source code from [GitHub](https://github.com/Refinitiv/Real-Time-SDK), and build the SDK library and example applications from scratch. This scenario is suitable for developers who new to the SDK. 
 
-This article aims for helping Java developers who already familiar with Maven to run the RTSDK Java application in Docker container by letting Docker resolves RTSDK Java library dependencies dynamically with Maven, then builds and runs the applications in the container(s). This scenario is suitable for the Java developers team who already uses Maven in their project to set up a Development environment via Docker. 
+This project aims for helping Java developers who already familiar with Maven to run the RTSDK Java application in Docker container by letting Docker resolves RTSDK Java library dependencies dynamically with Maven, then builds and runs the applications in the container(s). This scenario is suitable for the Java developers team who already uses Maven in their project to set up a Development environment via Docker. 
 
 Note: Please note that the Refinitiv Real-Time SDK isn't qualified on the Docker platform. This article and example projects aim for Development and Testing purposes only. If you find any problems while running it on the Docker platform, the issues must be replicated on bare metal machines before contacting the helpdesk support.
 
@@ -338,7 +338,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn -e -B dependency:resolve
 COPY src ./src
-RUN mvn -e -B package
+RUN mvn clean -e -B package
 
 # RTSDK Java
 FROM openjdk:11-jre-slim
@@ -360,7 +360,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn -e -B dependency:resolve
 COPY src ./src
-RUN mvn -e -B package
+RUN mvn clean -e -B package
 
 # RTSDK Java
 FROM openjdk:11-jre-slim
@@ -637,8 +637,8 @@ For further details, please check out the following resources:
 * [Introduction to the refinitivapis/realtimesdk_java Docker Image](https://developers.refinitiv.com/en/article-catalog/article/introduction-to-the-refinitivapis-realtimesdkjava-docker-image) article.
 * [Deploy and Run Refinitiv Real-Time SDK in Docker](https://developers.refinitiv.com/en/article-catalog/article/deploy-and-run-elektron-sdk-docker) article.
 * [Building a Keystore file to be used with an HTTPS (or ENCRYPTED) connection type for real-time Java-based APIs](https://developers.refinitiv.com/en/article-catalog/article/building-keystore-file-be-used-https-or-encrypted-connection-type-real-time-java-based-apis) article.
-
-
-Get started with Docker Compose https://docs.docker.com/compose/gettingstarted/
+* [Intro Guide to Dockerfile Best Practices](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/).
+* [Get Started with Docker](https://www.docker.com/get-started) page.
+* [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/) page.
 
 For any question related to this article or RTSDK page, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/).

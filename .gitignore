@@ -1,5 +1,4 @@
-note.txt
-docker.txt
+internal_dev/
 simpleCloudConsumer/target/
 advanceExamples/Consumer/target/
 advanceExamples/Consumer/logs/
