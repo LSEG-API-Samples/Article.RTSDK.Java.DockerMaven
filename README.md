@@ -139,7 +139,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn -e -B dependency:resolve
 COPY src ./src
-RUN mvn -e -B package
+RUN mvn clean -e -B package
 
 # RTSDK Java
 FROM openjdk:11-jre-slim
