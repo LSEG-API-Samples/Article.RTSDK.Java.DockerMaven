@@ -373,6 +373,17 @@ COPY resources ./resources
 CMD ["java", "-jar","-Dlog4j.configurationFile=./resources/log4j2.xml", "./Consumer-1.0-jar-with-dependencies.jar"]
 ```
 
+## <a id="application_files"></a>Project Application Files
+This example project contains the following files and folders
+1. *simpleCloudConsumer/* folder: The simple EMA Java Consumer on Docker project, contains source code, configurations, Maven and Docker files.
+2. *advanceExamples/IProvider*: The IProvider project folder for the advance use case, contains source code, configurations, Maven and Docker files.
+2. *advanceExamples/Consumer*: The Consumer project folder for the advance use case, contains source code, configurations, Maven and Docker files.
+2. *advanceExamples/docker-compose.yml*: The advance use case docker-compose configuration file.
+2. *.vscode*: Project's [VSCode](https://code.visualstudio.com/) extra configurations.
+6. *images/*: Project images folder.
+6. *diagram.pptx*: Project diagram file.
+7. *LICENSE.md*: Project's license file.
+8. *README.md*: Project's README file.
 
 ## <a id="prerequisite"></a>Demo prerequisite
 This example requires the following dependencies software and libraries.
