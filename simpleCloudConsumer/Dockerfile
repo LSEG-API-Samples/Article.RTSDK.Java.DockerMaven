@@ -8,9 +8,10 @@ RUN mvn -e -B package
 
 # RTSDK Java
 FROM openjdk:11-jre-slim
-COPY --from=builder /app/target/cloud_consumer-1.0-jar-with-dependencies.jar /
+WORKDIR /app
+COPY --from=builder /app/target/cloud_consumer-1.0-jar-with-dependencies.jar .
 COPY EmaConfig.xml .
 COPY etc ./etc
 COPY run.sh ./run.sh
-# Use shell script to support passing application name and its agruments to entrypoint
-ENTRYPOINT [ "/run.sh" ]
+# Use shell script to support passing application name and its arguments to the ENTRYPOINT
+ENTRYPOINT [ "./run.sh" ]

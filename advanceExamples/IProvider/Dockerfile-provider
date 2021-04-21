@@ -8,8 +8,9 @@ RUN mvn -e -B package
 
 # RTSDK Java
 FROM openjdk:11-jre-slim
-COPY --from=builder /app/target/IProvider-1.0-jar-with-dependencies.jar /
+WORKDIR /app
+COPY --from=builder /app/target/IProvider-1.0-jar-with-dependencies.jar .
 COPY EmaConfig.xml .
 COPY etc ./etc
 # run IProvider-1.0-jar-with-dependencies.jar with CMD
-CMD ["java", "-jar", "/IProvider-1.0-jar-with-dependencies.jar"]
+CMD ["java", "-jar", "./IProvider-1.0-jar-with-dependencies.jar"]

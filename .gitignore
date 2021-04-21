@@ -2,4 +2,5 @@ note.txt
 docker.txt
 simpleCloudConsumer/target/
 advanceExamples/Consumer/target/
+advanceExamples/Consumer/logs/
 advanceExamples/IProvider/target/
