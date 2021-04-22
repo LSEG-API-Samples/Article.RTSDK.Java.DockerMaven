@@ -13,7 +13,7 @@
 
 My colleague's [Deploy and Run Refinitiv Real-Time SDK in Docker](https://developers.refinitiv.com/en/article-catalog/article/deploy-and-run-elektron-sdk-docker) article already shows how to deploy and run RTSDK applications in the Docker by let Docker downloads the SDK source code from [GitHub](https://github.com/Refinitiv/Real-Time-SDK), and build the SDK library and example applications from scratch. This scenario is suitable for developers who new to the SDK. 
 
-This project aims for helping Java developers who already familiar with Maven to run the RTSDK Java application in Docker container by letting Docker resolves RTSDK Java library dependencies dynamically with Maven, then builds and runs the applications in the container(s). This scenario is suitable for the Java developers team who already uses Maven in their project to set up a Development environment via Docker. 
+This project aims for helping Java developers who already familiar with Maven to use the Java Builder container resolve RTSDK Java library dependencies dynamically with Maven, then builds and runs the real-time applications in the container(s). This scenario is suitable for the Java developer team who already uses Maven in their project to set up a Development and Build environment via Docker. 
 
 Note: Please note that the Refinitiv Real-Time SDK isn't qualified on the Docker platform. This article and example projects aim for Development and Testing purposes only. If you find any problems while running it on the Docker platform, the issues must be replicated on bare metal machines before contacting the helpdesk support.
 
@@ -373,6 +373,31 @@ COPY resources ./resources
 CMD ["java", "-jar","-Dlog4j.configurationFile=./resources/log4j2.xml", "./Consumer-1.0-jar-with-dependencies.jar"]
 ```
 
+Since we need to run both Provider and Consumer Containers simultaneously, so we use the [Docker-Compose](https://docs.docker.com/compose/) tool to build/run multi-container Docker applications. We define the containers configurations in the [docker-compose.yml (version 3)](https://docs.docker.com/compose/compose-file/compose-file-v3/) configuration file. Please note that the file is in [YAML](https://yaml.org/) file format. 
+
+The consumer service for Consumer contains is mapped the current *log* folder to the container working directory's */logs* folder with the [volumes configuration](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) to store the EMA and Consumer application log files in the Host machine. 
+
+```
+version: "3.9"
+services: 
+    provider:
+        image: developers/provider
+        build: 
+            context: ./IProvider
+            dockerfile: Dockerfile-provider
+        ports:
+            - "14002:14002"
+    consumer:
+        image: developers/consumer
+        build: 
+            context: ./Consumer
+            dockerfile: Dockerfile-consumer
+        depends_on: 
+            - provider
+        volumes: 
+            - ./Consumer/logs:/logs
+```
+
 ## <a id="application_files"></a>Project Application Files
 This example project contains the following files and folders
 1. *simpleCloudConsumer/* folder: The simple EMA Java Consumer on Docker project, contains source code, configurations, Maven and Docker files.
@@ -407,7 +432,7 @@ Please note that the Java application requires the Keystore file to connect to t
 Firstly, open the project folder in the command prompt and go to the *simpleCloudConsumer* subfolder. Next, run the [Docker build](https://docs.docker.com/engine/reference/commandline/build/) command to build the Docker Image name *developers/cloudconsumer*:
 
 ```
-$> docker build . -t developers/cloudconsumer
+$>simpleCloudConsumer> docker build . -t developers/cloudconsumer
 ```
 
 Then Docker will start building the application image. You can use ```docker images``` command to check the image detail.
@@ -417,7 +442,7 @@ Then Docker will start building the application image. You can use ```docker ima
 To start and run the cloudconsumer container, run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt.
 
 ```
-docker run -v C:\RTSDK_Java\keystore:/opt/keystore/ --name <Container Name> developers/cloudconsumer -username <machine-id> -password <password>-clientId <app_key> -keyfile /opt/keystore/Cloud_Keystore.jks -keypasswd <keystore password> -itemName <Request item name (optional)>
+$>simpleCloudConsumer> docker run -v C:\RTSDK_Java\keystore:/opt/keystore/ --name <Container Name> developers/cloudconsumer -username <machine-id> -password <password>-clientId <app_key> -keyfile /opt/keystore/Cloud_Keystore.jks -keypasswd <keystore password> -itemName <Request item name (optional)>
 ```
 The result is the following:
 
@@ -496,35 +521,10 @@ UpdateMsgEnd
 
 #### Running the IProvider and Consumer examples
 
-Firstly, open the project folder in the command prompt and go to the *advanceExamples* subfolder. Since we need to run both Provider and Consumer Containers simultaneously, so we use the [Docker-Compose](https://docs.docker.com/compose/) tool to build/run multi-container Docker applications. We define the containers configurations in the [docker-compose.yml (version 3)](https://docs.docker.com/compose/compose-file/compose-file-v3/) configuration file. Please note that the file is in [YAML](https://yaml.org/) file format. 
-
-The consumer service for Consumer contains is mapped the current *log* folder to the container working directory's */logs* folder with the [volumes configuration](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) to store the EMA and Consumer application log files in the Host machine. 
+Firstly, open the project folder in the command prompt and go to the *advanceExamples* subfolder. Then we run the following [Docker-Compose](https://docs.docker.com/compose/) command to build and run all applications containers:
 
 ```
-version: "3.9"
-services: 
-    provider:
-        image: developers/provider
-        build: 
-            context: ./IProvider
-            dockerfile: Dockerfile-provider
-        ports:
-            - "14002:14002"
-    consumer:
-        image: developers/consumer
-        build: 
-            context: ./Consumer
-            dockerfile: Dockerfile-consumer
-        depends_on: 
-            - provider
-        volumes: 
-            - ./Consumer/logs:/logs
-```
-
-Then we run the following command to build and run all applications containers with the following command:
-
-```
-$> docker-compose up
+$>advanceExamples> docker-compose up
 ```
 
 Then Docker will start building the application's images, then run Provider and Consumer containers. The Consumer container will connect and consume real-time streaming data from the Provider container.   
@@ -620,11 +620,11 @@ If you use ```docker images``` command, Docker will show that it already creates
 
 ![figure-4](images/docker_image_adv1.png "Provider and Consumer Images")
 
-For other Docker-Compose commands which can interact with these containers (such as ```docker-compose build```), please see the [Docker-Compose CLI reference page](https://docs.docker.com/compose/reference/).
+For other Docker-Compose commands which can interact with these containers/images (such as ```docker-compose build```), please see the [Docker-Compose CLI reference page](https://docs.docker.com/compose/reference/).
 
 ## <a id="conclusion"></a>Conclusion
 
-Docker is an open containerization platform for developing, testing, deploying, and running any software application. The combination of Docker and Maven provides a consistent development environment for Java developers and the team. The developer does not need to manually maintain jar file dependencies, the OS, and toolsets for the project. The Docker also help testing, deployment, and packaging on various environment easier than on the physical or virtual machine because the container already contains its configurations and dependencies. 
+Docker is an open containerization platform for developing, testing, deploying, and running any software application. The combination of Docker and Maven provides a consistent development environment for Java developers and the team. The developer does not need to manually maintain jar file dependencies, the OS, and toolsets for the project. The Docker also help building, testing, deployment, and packaging on various environment easier than on the physical or virtual machine because the container already contains its configurations and dependencies. 
 
 The RTSDK Java developers can fully gain benefits from both Docker and Maven. The SDK is now available in [Maven central repository](https://search.maven.org/) and the [refinitivapis/realtimesdk_java Docker Hub](https://hub.docker.com/r/refinitivapis/realtimesdk_java) repository. This project helps Java developers integrate the Maven development environment with Docker container to simplify the real-time development process for both simple and advanced use cases.
 
@@ -634,7 +634,6 @@ If you interested in other Refinitiv APIs and Docker integration, please see the
 - [Introduction to the refinitivapis/realtimesdk_c Docker Image](https://developers.refinitiv.com/en/article-catalog/article/introduction-to-the-refinitivapis-elektronsdkc-docker-image) article.
 - [Introduction to the refinitivrealtime/adspop docker image](https://developers.refinitiv.com/en/article-catalog/article/introduction-to-the-refinitivrealtime-adspop-docker-image) article
 - [refinitivapis/websocket_api Repository](https://hub.docker.com/r/refinitivapis/websocket_api).
-
 
 ## <a id="ref"></a>References
 
