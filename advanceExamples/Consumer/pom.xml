@@ -40,11 +40,13 @@
             <artifactId>ema</artifactId>
             <version>${rtsdk.version}</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>com.refinitiv.eta</groupId>
             <artifactId>eta</artifactId>
             <version>${rtsdk.version}</version>
         </dependency>
+        -->
         <dependency>
             <groupId>com.refinitiv.eta.valueadd</groupId>
             <artifactId>etaValueAdd</artifactId>
@@ -56,6 +58,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--
         <dependency>
             <groupId>com.refinitiv.eta.valueadd.cache</groupId>
             <artifactId>etaValueAddCache</artifactId>
@@ -66,6 +69,7 @@
             <artifactId>ansipage</artifactId>
             <version>${rtsdk.version}</version>
         </dependency>
+        -->
         <!-- log4j -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

@@ -1,6 +1,6 @@
 # How to deploy and run Real-Time Java application with Maven in Docker
-- version: 1.0.0
-- Last update: April 2021
+- version: 1.1.0
+- Last update: June 2021
 - Environment: Windows, Linux
 - Compiler: Java and Maven
 - Prerequisite: [Demo prerequisite](#prerequisite)
@@ -13,7 +13,7 @@
 
 My colleague's [Deploy and Run Refinitiv Real-Time SDK in Docker](https://developers.refinitiv.com/en/article-catalog/article/deploy-and-run-elektron-sdk-docker) article already shows how to deploy and run RTSDK applications in the Docker by let Docker downloads the SDK source code from [GitHub](https://github.com/Refinitiv/Real-Time-SDK), and build the SDK library and example applications from scratch. This scenario is suitable for developers who new to the SDK. 
 
-This project aims for helping Java developers who already familiar with Maven to use the Java Builder container resolve RTSDK Java library dependencies dynamically with Maven, then builds and runs the real-time applications in the container(s). This scenario is suitable for the Java developer team who already uses Maven in their project to set up a Development and Build environment via Docker. 
+This project aims for helping Java developers who already familiar with Maven to use the Java Builder container to resolve RTSDK Java library dependencies dynamically with Maven, then builds and runs the real-time applications in the container(s). This scenario is suitable for the Java developer team who already uses Maven in their project to set up a Development and Build environment via Docker.  
 
 Note: Please note that the Refinitiv Real-Time SDK isn't qualified on the Docker platform. This article and example projects aim for Development and Testing purposes only. If you find any problems while running it on the Docker platform, the issues must be replicated on bare metal machines before contacting the helpdesk support.
 
@@ -37,7 +37,7 @@ Note:
 
 ## <a id="simple_docker_consumer"></a>Simple EMA Java Consumer on Docker
 
-Let's start with a simple EMA Java Consumer application that connects and consume data from Refinitiv Real-Time - Optimized (RRTO) on the Cloud. The application *CloudConsumer* is based on EMA Java Consumer *ex450_MP_QueryServiceDiscovery* example application. 
+Let's start with a simple EMA Java Consumer application that connects and consume data from Refinitiv Real-Time - Optimized (RRTO) on the Cloud. The application *CloudConsumer* is based on the EMA Java Consumer *ex450_MP_QueryServiceDiscovery* example application. 
 
 ![figure-3](images/cloudconsumer_diagram.png "Simple EMA Java Cloud Consumer diagram")
 
@@ -66,30 +66,10 @@ The application project is in Maven project layout and the Maven *pom.xml* file 
     </properties>
 
     <dependencies>
-        <!-- RTSDK -->
+        <!-- RTSDK EMA Java-->
         <dependency>
             <groupId>com.refinitiv.ema</groupId>
             <artifactId>ema</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.refinitiv.eta</groupId>
-            <artifactId>eta</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.refinitiv.eta.valueadd</groupId>
-            <artifactId>etaValueAdd</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.refinitiv.eta.valueadd.cache</groupId>
-            <artifactId>etaValueAddCache</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.refinitiv.eta.ansi</groupId>
-            <artifactId>ansipage</artifactId>
             <version>${rtsdk.version}</version>
         </dependency>
     </dependencies>
@@ -155,7 +135,7 @@ ENTRYPOINT [ "./run.sh" ]
 
 This *Dockerfile* utilizes the best practices from [Intro Guide to Dockerfile Best Practices](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/) blog post. It uses multi-stage builds to separate the Maven build process from the RTSDK Java application run process. 
 
-You may notice that the Dockerfile calls the *run.sh* script with ```ENTRYPOINT``` instruction instead calls ```java``` command directly. The reason is the CloudConsumer application requires the RRTO credentials and Keystore file information input via the command line arguments  (```-username```, ```-password```, ```-clientId```,```-keyfile```, etc ), so we create the *run.sh* shell script to run the cloud_consumer-1.0-jar-with-dependencies.jar file and accept the command line arguments for Docker. 
+You may notice that the Dockerfile calls the *run.sh* script with ```ENTRYPOINT``` instruction instead calls ```java``` command directly. The reason is the CloudConsumer application requires the RRTO credentials information input via the command line arguments  (```-username```, ```-password```, ```-clientId```, etc ), so we create the *run.sh* shell script to run the cloud_consumer-1.0-jar-with-dependencies.jar file and accept the command line arguments for Docker. 
 
 The content of *run.sh* script is the following:
 
@@ -219,7 +199,7 @@ The IProvider application is based on EMA Java Interactive-Provider ex200_MP_Str
 
 The Consumer application is based on EMA Java Consumer ex200_MP_Streaming example with additional logic to print/log application and EMA Java API messages with [Apache Log4j](https://logging.apache.org/log4j/2.x/) library. Please refer to [Enterprise Message API Java with Log4j article](https://developers.refinitiv.com/en/article-catalog/article/how-integrate-elektron-message-api-java-log4j-logging-framework-using-maven)  for more detail about EMA Java application and Log4j integration. 
 
-The pom.xml file for Consumer project is the following:
+The pom.xml file for the Consumer project is the following:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -386,8 +366,6 @@ services:
         build: 
             context: ./IProvider
             dockerfile: Dockerfile-provider
-        ports:
-            - "14002:14002"
     consumer:
         image: developers/consumer
         build: 
@@ -402,14 +380,14 @@ services:
 ## <a id="application_files"></a>Project Application Files
 This example project contains the following files and folders
 1. *simpleCloudConsumer/* folder: The simple EMA Java Consumer on Docker project, contains source code, configurations, Maven and Docker files.
-2. *advanceExamples/IProvider*: The IProvider project folder for the advance use case, contains source code, configurations, Maven and Docker files.
-2. *advanceExamples/Consumer*: The Consumer project folder for the advance use case, contains source code, configurations, Maven and Docker files.
-2. *advanceExamples/docker-compose.yml*: The advance use case docker-compose configuration file.
-2. *.vscode*: Project's [VSCode](https://code.visualstudio.com/) extra configurations.
+2. *advanceExamples/IProvider*: The IProvider project folder for the advance use case, contains source code, configurations, Maven, and Docker files.
+3. *advanceExamples/Consumer*: The Consumer project folder for the advance use case, contains source code, configurations, Maven, and Docker files.
+4. *advanceExamples/docker-compose.yml*: The advance use case docker-compose configuration file.
+8. *.vscode*: Project's [VSCode](https://code.visualstudio.com/) extra configurations.
 6. *images/*: Project images folder.
-6. *diagram.pptx*: Project diagram file.
-7. *LICENSE.md*: Project's license file.
-8. *README.md*: Project's README file.
+7. *diagram.pptx*: Project diagram file.
+8. *LICENSE.md*: Project's license file.
+9. *README.md*: Project's README file.
 
 ## <a id="prerequisite"></a>Demo prerequisite
 This example requires the following dependencies software and libraries.
@@ -428,7 +406,7 @@ The RTSDK Java version 2.0.1 L1 (EMA Java 3.6.1) supports Oracle JDK versions 8,
 
 #### Running the CloudConsumer Example
 
-Please note that the Java application requires the Keystore file to connect to the Refinitiv Real-Time - Optimized HTTPS/ENCRYPTED connection, you need to create the Keystore file (.jsk) with the steps from [Building a Keystore file to be used with an HTTPS (or ENCRYPTED) connection type for real-time Java-based APIs](https://developers.refinitiv.com/en/article-catalog/article/building-keystore-file-be-used-https-or-encrypted-connection-type-real-time-java-based-apis) article first and store it in the Host directory. This project stores a Keystore file named *Cloud_Keystore.jks* in *C:\RTSDK_Java\keystore* location of the Host folder, and maps it to */opt/keystore/* Container’s directory.
+Please note that since RTSDK 1.5.1 (EMA and ETA Java API version 3.5.1), the SDK does not require the Keystore file (.jsk) to connect to the Refinitiv Real-Time - Optimized HTTPS/ENCRYPTED connection anymore. However, if you need to use the Keystore file, please see the step-by-step guide from the [Building a Keystore file to be used with an HTTPS (or ENCRYPTED) connection type for real-time Java-based APIs](https://developers.refinitiv.com/en/article-catalog/article/building-keystore-file-be-used-https-or-encrypted-connection-type-real-time-java-based-apis) article first and store it in the Host directory, then pass it to Docker with ```-v``` Docker run parameter.
 
 Firstly, open the project folder in the command prompt and go to the *simpleCloudConsumer* subfolder. Next, run the [Docker build](https://docs.docker.com/engine/reference/commandline/build/) command to build the Docker Image name *developers/cloudconsumer*:
 
@@ -443,7 +421,7 @@ Then Docker will start building the application image. You can use ```docker ima
 To start and run the cloudconsumer container, run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt.
 
 ```
-$>simpleCloudConsumer> docker run -v C:\RTSDK_Java\keystore:/opt/keystore/ --name <Container Name> developers/cloudconsumer -username <machine-id> -password <password>-clientId <app_key> -keyfile /opt/keystore/Cloud_Keystore.jks -keypasswd <keystore password> -itemName <Request item name (optional)>
+$>simpleCloudConsumer> docker run --name <Container Name> developers/cloudconsumer -username <machine-id> -password <password> -clientId <app_key> -itemName <Request item name (optional)>
 ```
 The result is the following:
 
@@ -627,7 +605,7 @@ For other Docker-Compose commands which can interact with these containers/image
 
 Docker is an open containerization platform for developing, testing, deploying, and running any software application. The combination of Docker and Maven provides a consistent development environment for Java developers and the team. The developer does not need to manually maintain jar file dependencies, the OS, and toolsets for the project. The Docker also help building, testing, deployment, and packaging on various environment easier than on the physical or virtual machine because the container already contains its configurations and dependencies. 
 
-The RTSDK Java developers can fully gain benefits from both Docker and Maven. The SDK is now available in [Maven central repository](https://search.maven.org/) and the [refinitivapis/realtimesdk_java Docker Hub](https://hub.docker.com/r/refinitivapis/realtimesdk_java) repository. This project helps Java developers integrate the Maven development environment with Docker container to simplify the real-time development process for both simple and advanced use cases.
+The RTSDK Java developers can fully gain benefits from both Docker and Maven. The SDK is now available in [Maven central repository](https://search.maven.org/) and the [refinitivapis/realtimesdk_java Docker Hub](https://hub.docker.com/r/refinitivapis/realtimesdk_java) repository. This project helps Java developers integrate the Maven development environment with the Docker container to simplify the real-time development process for both simple and advanced use cases.
 
 If you interested in other Refinitiv APIs and Docker integration, please see the following resources:
 - [Deploy and Run Refinitiv Real-Time SDK in Docker](https://developers.refinitiv.com/en/article-catalog/article/deploy-and-run-elektron-sdk-docker) article.
@@ -652,4 +630,4 @@ For further details, please check out the following resources:
 * [Get Started with Docker](https://www.docker.com/get-started) page.
 * [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/) page.
 
-For any question related to this article or RTSDK page, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/).
+For any questions related to this article or RTSDK page, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/).

@@ -5,8 +5,6 @@ services:
         build: 
             context: ./IProvider
             dockerfile: Dockerfile-provider
-        ports:
-            - "14002:14002"
     consumer:
         image: developers/consumer
         build: 
