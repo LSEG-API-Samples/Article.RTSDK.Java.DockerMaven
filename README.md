@@ -1,6 +1,6 @@
 # How to deploy and run Real-Time Java application with Maven in Docker
 - version: 1.1.0
-- Last update: June 2021
+- Last update: September 2021
 - Environment: Windows, Linux
 - Compiler: Java and Maven
 - Prerequisite: [Demo prerequisite](#prerequisite)
