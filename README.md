@@ -1,13 +1,13 @@
 # How to deploy and run Real-Time Java application with Maven in Docker
 - version: 1.1.0
-- Last update: June 2021
+- Last update: September 2021
 - Environment: Windows, Linux
 - Compiler: Java and Maven
 - Prerequisite: [Demo prerequisite](#prerequisite)
 
 ## <a id="Introduction"></a>Introduction
 
-[Refinitiv Real-Time SDK (Java Edition)](https://developers.refinitiv.com/en/api-catalog/elektron/elektron-sdk-java) (RTSDK, formerly known as Elektron SDK) is a suite of modern and open source APIs that aim to simplify development through a strong focus on ease of use and standardized access to a broad set of Refinitiv proprietary content and services via the proprietary TCP connection named RSSL and proprietary binary message encoding format named OMM Message.  The SDK supports Java build automation tools such as [Apache Maven](https://maven.apache.org/) and [Gradle](https://gradle.org/) which helps Java developers build RTSDK Java application, manage its dependencies, and better collaboration in the team.
+[Refinitiv Real-Time SDK (Java Edition)](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java) (RTSDK, formerly known as Elektron SDK) is a suite of modern and open source APIs that aim to simplify development through a strong focus on ease of use and standardized access to a broad set of Refinitiv proprietary content and services via the proprietary TCP connection named RSSL and proprietary binary message encoding format named OMM Message.  The SDK supports Java build automation tools such as [Apache Maven](https://maven.apache.org/) and [Gradle](https://gradle.org/) which helps Java developers build RTSDK Java application, manage its dependencies, and better collaboration in the team.
 
 [Docker](https://www.docker.com/) is an open containerization platform for developing, testing, deploying, and running any software application. In Docker, the applications are presented as lightweight, portable, and self-sustaining containers which can be simultaneously run in a loosely isolated and virtual environment on a given host. Developers can use Docker to automate repetitive chores, such as setting up and configuring controlled development environments. Each environment or container has its resources that are independent of other containers. Numerous containers of separate applications are running on completely different stacks. Therefore, developers can avoid common problems, such as run-time library conflicts, and unsupported environments, and focus totally on developing software. Moreover, they can simply delete the containers without any footprints left on the host machine.
 
@@ -617,9 +617,9 @@ If you interested in other Refinitiv APIs and Docker integration, please see the
 ## <a id="ref"></a>References
 
 For further details, please check out the following resources:
-* [Refinitiv Real-Time SDK Java page](https://developers.refinitiv.com/en/api-catalog/elektron/elektron-sdk-java) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) website.
+* [Refinitiv Real-Time SDK Java page](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) website.
 * [Refinitiv Real-Time SDK Family](https://developers.refinitiv.com/en/use-cases-catalog/refinitiv-real-time) page.
-* [Enterprise Message API Java Quick Start](https://developers.refinitiv.com/en/api-catalog/elektron/elektron-sdk-java/quick-start)
+* [Enterprise Message API Java Quick Start](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java/quick-start)
 * [Developer Webinar: Introduction to Enterprise App Creation With Open-Source Enterprise Message API](https://www.youtube.com/watch?v=2pyhYmgHxlU)
 * [Developer Article: 10 important things you need to know before you write an Enterprise Real Time application](https://developers.refinitiv.com/article/10-important-things-you-need-know-you-write-elektron-real-time-application)
 * [How to Set Up Refinitiv Real-Time SDK Java Application with Maven](https://developers.refinitiv.com/en/article-catalog/article/how-to-set-up-refinitiv-real-time-sdk-java-application-with-mave)
