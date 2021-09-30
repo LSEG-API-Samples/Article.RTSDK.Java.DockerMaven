@@ -123,7 +123,7 @@ COPY src ./src
 RUN mvn clean -e -B package
 
 # RTSDK Java
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jre-slim-buster
 WORKDIR /app
 COPY --from=builder /app/target/cloud_consumer-1.0-jar-with-dependencies.jar .
 COPY EmaConfig.xml .
@@ -144,6 +144,32 @@ The content of *run.sh* script is the following:
 
 java -jar ./cloud_consumer-1.0-jar-with-dependencies.jar "$@"
 ```
+
+**Update: September 2021.**
+
+You do not need the *run.sh* script to run the application in a Docker container. You can set both ```ENTRYPOINT``` and ```CMD``` instructions instead.
+
+```
+# Maven 
+FROM maven:3.8.1-openjdk-11-slim AS builder
+WORKDIR /app
+COPY pom.xml .
+RUN mvn -e -B dependency:resolve
+COPY src ./src
+RUN mvn clean -e -B package
+
+# RTSDK Java
+FROM openjdk:11-jre-slim-buster
+WORKDIR /app
+COPY --from=builder /app/target/cloud_consumer-1.0-jar-with-dependencies.jar .
+COPY EmaConfig.xml .
+COPY etc ./etc
+#COPY run.sh ./run.sh #comment the COPY command
+ENTRYPOINT ["java", "-jar", "./cloud_consumer-1.0-jar-with-dependencies.jar"]
+CMD ["-ric", "/EUR="]
+```
+
+Then you can pass the RRTO credentials and the application command line arguments after the ```docker run``` command as usual.
 
 ## <a id="advance_docker_applications"></a>Advance EMA Consumer and IProvider applications on Docker
 
@@ -322,7 +348,7 @@ COPY src ./src
 RUN mvn clean -e -B package
 
 # RTSDK Java
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jre-slim-buster
 WORKDIR /app
 COPY --from=builder /app/target/IProvider-1.0-jar-with-dependencies.jar .
 COPY EmaConfig.xml .
@@ -344,7 +370,7 @@ COPY src ./src
 RUN mvn clean -e -B package
 
 # RTSDK Java
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jre-slim-buster
 WORKDIR /app
 COPY --from=builder /app/target/Consumer-1.0-jar-with-dependencies.jar .
 COPY EmaConfig.xml .
@@ -421,7 +447,7 @@ Then Docker will start building the application image. You can use ```docker ima
 To start and run the cloudconsumer container, run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt.
 
 ```
-$>simpleCloudConsumer> docker run --name <Container Name> developers/cloudconsumer -username <machine-id> -password <password> -clientId <app_key> -itemName <Request item name (optional)>
+$>simpleCloudConsumer> docker run --name <Container Name> -it developers/cloudconsumer -username <machine-id> -password <password> -clientId <app_key> -itemName <Request item name (optional)>
 ```
 The result is the following:
 

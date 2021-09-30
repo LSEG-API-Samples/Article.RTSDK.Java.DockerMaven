@@ -7,7 +7,8 @@ COPY src ./src
 RUN mvn clean -e -B package
 
 # RTSDK Java
-FROM openjdk:11-jre-slim
+#FROM openjdk:11-jre-slim
+FROM openjdk:11-jre-slim-buster
 WORKDIR /app
 COPY --from=builder /app/target/IProvider-1.0-jar-with-dependencies.jar .
 COPY EmaConfig.xml .
