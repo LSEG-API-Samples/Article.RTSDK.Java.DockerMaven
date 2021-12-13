@@ -1,9 +1,12 @@
 # How to deploy and run Real-Time Java application with Maven in Docker
 - version: 1.1.0
-- Last update: September 2021
+- Last update: December 2021
 - Environment: Windows, Linux
 - Compiler: Java and Maven
 - Prerequisite: [Demo prerequisite](#prerequisite)
+
+
+**As of December 2021**: There is a new serious vulnerability was identified impacting the Apache Log4j utility ([CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228)). The issue is fixed in Apache Log4j version **2.15**. Please see more detail from the [Apache Log4j Security Vulnerabilities](https://logging.apache.org/log4j/2.x/security.html) page.
 
 ## <a id="Introduction"></a>Introduction
 
@@ -244,7 +247,7 @@ The pom.xml file for the Consumer project is the following:
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <rtsdk.version>3.6.1.0</rtsdk.version>
-        <log4j.version>2.14.0</log4j.version>
+        <log4j.version>2.15.0</log4j.version>
     </properties>
 
     <dependencies>
