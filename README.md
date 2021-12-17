@@ -658,5 +658,7 @@ For further details, please check out the following resources:
 * [Intro Guide to Dockerfile Best Practices](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/).
 * [Get Started with Docker](https://www.docker.com/get-started) page.
 * [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/) page.
+* [Developer Article: How to deploy and run Real-Time Java Application with Maven in Docker](https://developers.refinitiv.com/en/article-catalog/article/how-to-deploy-and-run-real-time-java-application-with-maven-in-d)
+* [Medium Article: How to deploy and run Real-Time Java Application with Maven in Docker](https://wasin-waeosri.medium.com/how-to-deploy-and-run-real-time-java-application-with-maven-in-docker-58e66dd1e247)
 
 For any questions related to this article or RTSDK page, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/).
