@@ -6,7 +6,7 @@
 - Prerequisite: [Demo prerequisite](#prerequisite)
 
 
-**As of December 2021**: There are new serious vulnerabilities that were identified impacting the Apache Log4j utility. Please update the libary to the latest version. You can find more detail regarding the vulnerability and the fix from the [Apache Log4j Security Vulnerabilities](https://logging.apache.org/log4j/2.x/security.html) page.
+**As of December 2021**: There are new serious vulnerabilities that were identified impacting the Apache Log4j utility. Please update the library to the latest version. You can find more detail regarding the vulnerability and the fix from the [Apache Log4j Security Vulnerabilities](https://logging.apache.org/log4j/2.x/security.html) page.
 
 ## <a id="Introduction"></a>Introduction
 
