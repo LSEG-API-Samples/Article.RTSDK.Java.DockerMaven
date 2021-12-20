@@ -6,7 +6,7 @@
 - Prerequisite: [Demo prerequisite](#prerequisite)
 
 
-**As of December 2021**: There are new serious vulnerabilities were identified impacting the Apache Log4j utility ([CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) and [CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)). The issues are fixed in Apache Log4j version **2.16**. Please see more detail from the [Apache Log4j Security Vulnerabilities](https://logging.apache.org/log4j/2.x/security.html) page.
+**As of December 2021**: There are new serious vulnerabilities that were identified impacting the Apache Log4j utility. Please update to the latest version of the Apache Log4j library. You can find more detail regarding the vulnerability and the fix from the [Apache Log4j Security Vulnerabilities](https://logging.apache.org/log4j/2.x/security.html) page.
 
 ## <a id="Introduction"></a>Introduction
 
@@ -247,7 +247,7 @@ The pom.xml file for the Consumer project is the following:
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <rtsdk.version>3.6.1.0</rtsdk.version>
-        <log4j.version>2.16.0</log4j.version>
+        <log4j.version>2.17.0</log4j.version>
     </properties>
 
     <dependencies>
