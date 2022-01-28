@@ -1,6 +1,6 @@
 # How to deploy and run Real-Time Java application with Maven in Docker
 - version: 1.1.0
-- Last update: December 2021
+- Last update: January 2022
 - Environment: Windows, Linux
 - Compiler: Java and Maven
 - Prerequisite: [Demo prerequisite](#prerequisite)
@@ -247,7 +247,7 @@ The pom.xml file for the Consumer project is the following:
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <rtsdk.version>3.6.1.0</rtsdk.version>
-        <log4j.version>2.17.0</log4j.version>
+        <log4j.version>2.17.1</log4j.version>
     </properties>
 
     <dependencies>
