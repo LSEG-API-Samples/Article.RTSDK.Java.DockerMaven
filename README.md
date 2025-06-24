@@ -104,7 +104,7 @@ The application project is in Maven project layout and the Maven *pom.xml* file 
 </project>
 ```
 
-The above Maven *pom.xml* file resolves the RTSDK Java library and dependencies from Maven Central, and then builds the application and the RTSDK library into a single-all-dependencies jar file named *cloud_consumer-1.0-jar-with-dependencies.jar*.  Please see [How to Set Up Refinitiv Real-Time SDK Java Application with Maven](https://developers.lseg.com/en/article-catalog/article/how-to-set-up-refinitiv-real-time-sdk-java-application-with-mave) article about the pom.xml setting for the RTSDK Java library.
+The Maven *pom.xml* file above resolves the RTSDK Java library and dependencies from Maven Central, and then builds the application and the RTSDK library into a single-all-dependencies jar file named *cloud_consumer-1.0-jar-with-dependencies.jar*.  Please see [How to Set Up Refinitiv Real-Time SDK Java Application with Maven](https://developers.lseg.com/en/article-catalog/article/how-to-set-up-refinitiv-real-time-sdk-java-application-with-mave) article about the pom.xml setting for the RTSDK Java library.
 
 ### Project Docker file
 
