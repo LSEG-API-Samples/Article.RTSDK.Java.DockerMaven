@@ -11,9 +11,9 @@
     <name>IProvider</name>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <rtsdk.version>3.6.1.0</rtsdk.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <rtsdk.version>3.9.0.1</rtsdk.version>
         <cowsay.version>1.1.0</cowsay.version>
     </properties>
 
@@ -39,6 +39,11 @@
             <groupId>com.refinitiv.ema</groupId>
             <artifactId>ema</artifactId>
             <version>${rtsdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.17.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.github.ricksbrown/cowsay -->

@@ -11,10 +11,10 @@
     <name>Consumer</name>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <rtsdk.version>3.6.1.0</rtsdk.version>
-        <log4j.version>2.17.1</log4j.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <rtsdk.version>3.9.0.1</rtsdk.version>
+        <log4j.version>2.24.3</log4j.version>
     </properties>
 
     <dependencies>
@@ -35,58 +35,35 @@
         -->
 
         <!-- RTSDK -->
-        <dependency>
-            <groupId>com.refinitiv.ema</groupId>
-            <artifactId>ema</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>com.refinitiv.eta</groupId>
-            <artifactId>eta</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>com.refinitiv.eta.valueadd</groupId>
-            <artifactId>etaValueAdd</artifactId>
-            <version>${rtsdk.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-jdk14</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>com.refinitiv.eta.valueadd.cache</groupId>
-            <artifactId>etaValueAddCache</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.refinitiv.eta.ansi</groupId>
-            <artifactId>ansipage</artifactId>
-            <version>${rtsdk.version}</version>
-        </dependency>
-        -->
-        <!-- log4j -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
+       <dependency>
+			<groupId>com.refinitiv.ema</groupId>
+			<artifactId>ema</artifactId>
+			<version>${rtsdk.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-jdk14</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        
+        
+        <!-- Log4J - SLF4J -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
 
     </dependencies>
 

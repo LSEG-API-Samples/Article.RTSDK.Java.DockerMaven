@@ -1,16 +1,17 @@
-version: "3.9"
+name: emajava_docker
 services: 
     provider:
         image: developers/provider
         build: 
             context: ./IProvider
-            dockerfile: Dockerfile-provider
+            dockerfile: Dockerfile
     consumer:
         image: developers/consumer
         build: 
             context: ./Consumer
-            dockerfile: Dockerfile-consumer
+            dockerfile: Dockerfile
         depends_on: 
-            - provider
+            provider:
+                condition: service_started
         volumes: 
             - ./Consumer/logs:/logs

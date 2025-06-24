@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
+<Configuration xmlns="https://logging.apache.org/xml/ns"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                   https://logging.apache.org/xml/ns
+                   https://logging.apache.org/xml/ns/log4j-config-2.xsd">
 
     <Appenders>
         <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="%d Class name-%C Message-%m%n"/>
         </Console>
-        <File name="emaLogFile" fileName="/logs/ema_log4j.log">
-            <PatternLayout>
-                <Pattern>%d LEVEL-%-5p Thread-[%t]  Method-%M()   Class name-%C   Message-%m%n
-                </Pattern>
-            </PatternLayout>
+        <File name="emaLogFile" fileName="logs/ema_log4j.log">
+            <PatternLayout pattern="%d LEVEL-%-5p Thread-[%t]  Method-%M() Class name-%C   Message-%m%n"/>
         </File>
-        <File name="consumerLogFile" fileName="/logs/consumer_log4j.log">
-            <PatternLayout>
-                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
-                </Pattern>
-            </PatternLayout>
+        <File name="consumerLogFile" fileName="logs/consumer_log4j.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
     </Appenders>
 
     <Loggers>
         <!-- avoid duplicated logs with additivity=false -->
-        <Logger name="com.refinitiv.ema" level="trace" additivity="false">
+        <Logger name="com.refinitiv.ema" level="TRACE" additivity="false">
             <AppenderRef ref="emaLogFile"/>
         </Logger>
-        <Logger name="com.refinitiv.ema.consumer" level="info" additivity="false">
+        <Logger name="com.refinitiv.ema.consumer" level="INFO" additivity="false">
             <AppenderRef ref="LogToConsole"/>
             <AppenderRef ref="consumerLogFile"/>
         </Logger>

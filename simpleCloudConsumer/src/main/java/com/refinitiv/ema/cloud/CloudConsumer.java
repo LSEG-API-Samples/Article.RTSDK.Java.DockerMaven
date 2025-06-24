@@ -1,9 +1,9 @@
-///*|----------------------------------------------------------------------------------------------------
-// *|            This source code is provided under the Apache 2.0 license      	--
+///*|-----------------------------------------------------------------------------
+// *|            This source code is provided under the Apache 2.0 license      --
 // *|  and is provided AS IS with no warranty or guarantee of fit for purpose.  --
-// *|                See the project's LICENSE.md for details.                  					--
-// *|           Copyright (C) 2020 Refinitiv. All rights reserved.            		--
-///*|----------------------------------------------------------------------------------------------------
+// *|                See the project's LICENSE.md for details.                  --
+// *|           Copyright LSEG 2025. All rights reserved.                       --
+///*|-----------------------------------------------------------------------------
 
 // This source code is based on EMA Java Consumer ex450_MP_QueryServiceDiscovery
 
@@ -82,20 +82,18 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 
 public class CloudConsumer
 {
-	static String userName;
-	static String password;
 	static String clientId;
+	static String clientSecret;
 	static String proxyHostName;
 	static String proxyPort = "-1";
 	static String proxyUserName;
 	static String proxyPassword;
 	static String proxyDomain;
-	static String proxyKrb5Configfile;
 	static boolean takeExclusiveSignOnControl = true;
 	static boolean connectWebSocket = false;
 	public static String host;
 	public static String port;
-	public static String location = "us-east";
+	public static String location = "ap-southeast";
 
 	public static String itemName = "/EUR=";
 
@@ -139,41 +137,25 @@ public class CloudConsumer
 	                printHelp();
 	                return false;
 	            }
-	            else if ("-username".equals(args[argsCount]))
-    			{
-	            	userName = argsCount < (args.length-1) ? args[++argsCount] : null;
-    				++argsCount;				
-    			}
-	            else if ("-password".equals(args[argsCount]))
-    			{
-	            	password = argsCount < (args.length-1) ? args[++argsCount] : null;
-    				++argsCount;				
-    			}
 	            else if ("-clientId".equals(args[argsCount]))
     			{
 	            	clientId = argsCount < (args.length-1) ? args[++argsCount] : null;
     				++argsCount;				
     			}
-	            else if ("-location".equals(args[argsCount]))
+	            else if ("-clientSecret".equals(args[argsCount]))
     			{
-	            	location = argsCount < (args.length-1) ? args[++argsCount] : null;
-    				++argsCount;				
-    			}
-    			else if ("-keyfile".equals(args[argsCount]))
-    			{
-    				config.tunnelingKeyStoreFile(argsCount < (args.length-1) ? args[++argsCount] : null);
-    				config.tunnelingSecurityProtocol("TLS");
-    				++argsCount;				
-    			}	
-    			else if ("-keypasswd".equals(args[argsCount]))
-    			{
-    				config.tunnelingKeyStorePasswd(argsCount < (args.length-1) ? args[++argsCount] : null);
+	            	clientSecret = argsCount < (args.length-1) ? args[++argsCount] : null;
     				++argsCount;				
     			}
     			else if ("-itemName".equals(args[argsCount]))
     			{
     				itemName = argsCount < (args.length-1) ? args[++argsCount] : null;
     				++argsCount;
+    			}
+				else if ("-location".equals(args[argsCount]))
+    			{
+	            	location = argsCount < (args.length-1) ? args[++argsCount] : null;
+    				++argsCount;				
     			}
     			else if ("-ph".equals(args[argsCount]))
     			{
@@ -200,11 +182,7 @@ public class CloudConsumer
     				proxyDomain = argsCount < (args.length-1) ? args[++argsCount] : null;
     				++argsCount;				
     			}
-    			else if ("-krbfile".equals(args[argsCount]))
-    			{
-    				proxyKrb5Configfile = argsCount < (args.length-1) ? args[++argsCount] : null;
-    				++argsCount;				
-    			}
+    			
     			else if ("-takeExclusiveSignOnControl".equals(args[argsCount]))
     			{
     				String takeExclusiveSignOnControlStr = argsCount < (args.length-1) ? args[++argsCount] : null;
@@ -219,11 +197,7 @@ public class CloudConsumer
     				
     				++argsCount;				
     			}
-    			else if ("-websocket".equals(args[argsCount]))
-    			{
-    				connectWebSocket = true;
-    				++argsCount;
-    			}
+    			
     			else // unrecognized command line argument
     			{
     				printHelp();
@@ -231,9 +205,9 @@ public class CloudConsumer
     			}			
     		}
 	        
-	        if ( userName == null || password == null || clientId == null)
+	        if ( clientSecret == null || clientId == null)
 			{
-				System.out.println("Username, password, and clientId must be specified on the command line. Exiting...");
+				System.out.println("clientId and clientSecret must be specified on the command line. Exiting...");
 				printHelp();
 				return false;
 			}
@@ -272,11 +246,6 @@ public class CloudConsumer
 		
 		innerElementList.add(EmaFactory.createElementEntry().ascii("ChannelType", "ChannelType::RSSL_ENCRYPTED"));
 		
-		if(connectWebSocket)
-		{
-			innerElementList.add(EmaFactory.createElementEntry().ascii("EncryptedProtocolType", "EncryptedProtocolType::RSSL_WEBSOCKET"));
-			innerElementList.add(EmaFactory.createElementEntry().ascii("WsProtocols", "tr_json2"));
-		}
 		
 		innerElementList.add(EmaFactory.createElementEntry().ascii("Host", host));
 		innerElementList.add(EmaFactory.createElementEntry().ascii("Port", port));
@@ -290,21 +259,6 @@ public class CloudConsumer
 		
 		configDb.add(EmaFactory.createMapEntry().keyAscii("ChannelGroup", MapEntry.MapAction.ADD, elementList));
 		elementList.clear();
-		
-		if(connectWebSocket)
-		{
-			innerElementList.add( EmaFactory.createElementEntry().ascii( "DictionaryType", "DictionaryType::FileDictionary" ));
-			innerElementList.add( EmaFactory.createElementEntry().ascii( "RdmFieldDictionaryFileName", "./etc/RDMFieldDictionary" ));
-			innerElementList.add( EmaFactory.createElementEntry().ascii( "EnumTypeDefFileName", "./etc/enumtype.def" ));
-			elementMap.add( EmaFactory.createMapEntry().keyAscii( "Dictionary_1", MapEntry.MapAction.ADD, innerElementList ));
-			innerElementList.clear();
-		
-			elementList.add( EmaFactory.createElementEntry().map( "DictionaryList", elementMap ));
-			elementMap.clear();
-		
-			configDb.add( EmaFactory.createMapEntry().keyAscii( "DictionaryGroup", MapEntry.MapAction.ADD, elementList ));
-			elementList.clear();
-		}
 	}
 	
 	public static void main(String[] args)
@@ -320,16 +274,16 @@ public class CloudConsumer
 			
 			if (!readCommandlineArgs(args, config)) return;
 			
-			serviceDiscovery.registerClient(EmaFactory.createServiceEndpointDiscoveryOption().username(userName)
-					.password(password).clientId(clientId)
+			serviceDiscovery.registerClient(EmaFactory.createServiceEndpointDiscoveryOption().clientId(clientId)
+					.clientSecret(clientSecret)
 					.transport(connectWebSocket ? ServiceEndpointDiscoveryOption.TransportProtocol.WEB_SOCKET : ServiceEndpointDiscoveryOption.TransportProtocol.TCP)
 					.takeExclusiveSignOnControl(takeExclusiveSignOnControl)
 					.proxyHostName(proxyHostName).proxyPort(proxyPort).proxyUserName(proxyUserName)
-					.proxyPassword(proxyPassword).proxyDomain(proxyDomain).proxyKRB5ConfigFile(proxyKrb5Configfile), appClient);
+					.proxyPassword(proxyPassword).proxyDomain(proxyDomain), appClient);
 			
 			if ( host == null || port == null )
 			{
-				System.out.println("Both hostname and port are not avaiable for establishing a connection with Refinitiv Real-Time - Optimized. Exiting...");
+				System.out.println("Both hostname and port are not available for establishing a connection with Real-Time - Optimized. Exiting...");
 				return;
 			}
 			
@@ -337,16 +291,13 @@ public class CloudConsumer
 			
 			if ( (proxyHostName == null) && (proxyPort == "-1") )
 			{
-				consumer  = EmaFactory.createOmmConsumer(config.consumerName("Consumer_1").username(userName).password(password)
-					.clientId(clientId).takeExclusiveSignOnControl(takeExclusiveSignOnControl).config(configDb));
+				consumer = EmaFactory.createOmmConsumer(config.consumerName("Consumer_1").clientId(clientId).clientSecret(clientSecret).config(configDb));
 			}
 			else
 			{
-				consumer  = EmaFactory.createOmmConsumer(config.consumerName("Consumer_1").username(userName).password(password)
-					.clientId(clientId).config(configDb).takeExclusiveSignOnControl(takeExclusiveSignOnControl)
-					.tunnelingProxyHostName(proxyHostName).tunnelingProxyPort(proxyPort)
-					.tunnelingCredentialUserName(proxyUserName).tunnelingCredentialPasswd(proxyPassword).tunnelingCredentialDomain(proxyDomain)
-					.tunnelingCredentialKRB5ConfigFile(proxyKrb5Configfile));
+				consumer  = EmaFactory.createOmmConsumer(config.consumerName("Consumer_1").clientId(clientId).clientSecret(clientSecret).config(configDb)
+								.tunnelingProxyHostName(proxyHostName).tunnelingProxyPort(proxyPort)
+								.tunnelingCredentialUserName(proxyUserName).tunnelingCredentialPasswd(proxyPassword).tunnelingCredentialDomain(proxyDomain));
 			}
 					
 			
