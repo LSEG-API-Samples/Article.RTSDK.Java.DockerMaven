@@ -30,7 +30,7 @@ The Real-Time SDK Java is now available in [Maven Central Repository](https://se
 For more detail regarding how to setup RTSDK Java project with Maven, please see [How to Set Up Refinitiv Real-Time SDK Java Application with Maven](https://developers.lseg.com/en/article-catalog/article/how-to-set-up-refinitiv-real-time-sdk-java-application-with-mave) article and [GitHub Project](https://github.com/Refinitiv-API-Samples/Article.RTSDK.Java.MavenHowTo) pages
 
 Note: 
-- This article is based on EMA Java version 3.9.0.1 L1 (RTSDK Java Edition 2.3.0 L2). 
+- This article is based on EMA Java version 3.9.0 L2 (RTSDK Java Edition 2.3.0 L2). 
 
 ## <a id="simple_docker_consumer"></a>Simple EMA Java Consumer on Docker
 
